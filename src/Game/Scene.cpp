@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include <AssetManager.h>
+#include <Cube.h>
 
 Scene::Scene(OpenGLWindow * window) :
 	m_window(window)
@@ -12,126 +13,34 @@ Scene::~Scene()
 
 bool Scene::init()
 {
-	try
-	{
+	try {
 		//Load shader
 		m_assets.addShaderProgram("shader", AssetManager::createShaderProgram("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl"));
 		m_shader = m_assets.getShaderProgram("shader");
-        m_shader->use();
-
-		/*float vertices[] = {-0.5, -0.5, 0.0, 0.0, 1.0,
-							0.5, -0.5, 0.0, 0.0, 1.0,
-							0.5, 0.5, 0.0, 1.0, 0.0,
-							0.0, 1.0, 1.0, 0.0, 0.0,
-							-0.5, 0.5, 0.0, 1.0, 0.0};
-
-		int indices[] = {0, 1, 2,
-						 0, 2, 4,
-						 4, 2, 3};
-
-		glGenBuffers(1, &vboID); //ID generieren
-		glBindBuffer(GL_ARRAY_BUFFER, vboID ); //Buffer aktivieren
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW); // Hochladen der Daten auf die GPU
-
-		 glGenVertexArrays(1, &vaoID); //ID generieren
-		 glBindVertexArray(vaoID); //VAO aktivieren
-
-		// Define vertex attributes
-		// Positions
-		glVertexAttribPointer(0, 2, GL_FLOAT, false, 5 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(0); //Einschalten Attribute for Position.
-
-		// Colors
-		glVertexAttribPointer(1, 3, GL_FLOAT, false, 5 * sizeof(float), (void*)(2* sizeof(float)));
-		glEnableVertexAttribArray(1); //Einschalten Attribute for Colors.
-
-		//Create Index Buffer Object
-		GLuint iboID;
-		glGenBuffers(1, &iboID);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices, GL_STATIC_DRAW);
-
-		//Unbind VAO
-		glBindVertexArray(0);
-		//Unbind VBO
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-		// Only the front sides of the triangles are rendered
-		glEnable(GL_CULL_FACE); // enables face culling
-		glFrontFace(GL_CCW); // counterclockwise //OpenGL considers triangles drawn as CCW as front facing, // all CW are considered here as backfacing.
-		glCullFace(GL_BACK); // says OpenGL to enable backface culling means the side not facing towards camera will be hidden.*/
-
-
-
-		float vertices[] = {
-			// x,     y,      r, g, b
-			0,  0,		1, 0, 0,
-			0.1f, 0,		1, 0, 0,
-            0.1f, 0.2f,		1, 0, 0,
-			0 , 0.3f,		1, 0, 0,
-			0.4f , 0.3f,		0, 1, 0,
-			0.4f , 0.2f,		0, 1, 0,
-			0.4f , 0,		0, 0, 1,
-			0.3f , 0,		0, 0, 1,
-			0.3f, 0.2f,		0, 0, 1,
-			0.1f, 0.1f,		1, 0, 0,
-			0.1f, 0.5f,		1, 0, 0,
-			0.1f, 0.3f,		1, 0, 0,
-			0, 0.6f,		0, 1, 0,
-			0.4f, 0.6f,		0, 1, 0,
-			0.4f, 0.5f,		0, 1, 0,
-			0.3f, 0.5f,		0, 0, 1,
-			0.3f, 0.3f,		0, 0, 1,
-			0.3f, 0.4f,		0, 0, 1,
-			0.1f, 0.4f,		0, 0, 1,
-			0.3f ,0.1f,      0, 0, 1
-		};
-
-		int indices[]= {
-
-			0, 1, 2,
-			0, 2, 3,
-			2, 4, 3,
-			2, 4, 5,
-			5, 8, 7,
-			7, 6, 5,
-			1, 19, 9,
-			1, 7, 19,
-			3, 10, 12,
-			3, 11, 10,
-			10, 12, 13,
-			10, 14, 13,
-			15, 14, 16,
-			14, 16, 4,
-			11, 17, 18,
-			11, 16, 17,
-		};
-
-
-
+		m_shader->use();
 
 
 		glGenBuffers(1, &vboID); //ID generieren
 		glBindBuffer(GL_ARRAY_BUFFER, vboID ); //Buffer aktivieren
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW); // Hochladen der Daten auf die GPU
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVert), &cubeVert, GL_STATIC_DRAW); // Hochladen der Daten auf die GPU
 
 		glGenVertexArrays(1, &vaoID); //ID generieren
 		glBindVertexArray(vaoID); //VAO aktivieren
 
 		// Define vertex attributes
 		// Positions
-		glVertexAttribPointer(0, 2, GL_FLOAT, false, 5 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0); //Einschalten Attribute for Position.
 
 		// Colors
-		glVertexAttribPointer(1, 3, GL_FLOAT, false, 5 * sizeof(float), (void*)(2* sizeof(float)));
+		glVertexAttribPointer(1, 3, GL_FLOAT, false, 6 * sizeof(float), (void*)(3* sizeof(float)));
 		glEnableVertexAttribArray(1); //Einschalten Attribute for Colors.
 
 		//Create Index Buffer Object
 		GLuint iboID;
 		glGenBuffers(1, &iboID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeInd), &cubeInd, GL_STATIC_DRAW);
 
 		//Unbind VAO
 		glBindVertexArray(0);
@@ -140,28 +49,39 @@ bool Scene::init()
 
 		// Only the front sides of the triangles are rendered
 		glEnable(GL_CULL_FACE);
-		glFrontFace(GL_CCW);
 		glCullFace(GL_BACK);
 
-        std::cout << "Scene initialization done\n";
-        return true;
+		// Enable depth test
+		glEnable(GL_DEPTH_TEST);
+		glDepthFunc(GL_GREATER);
+		glClearDepth(0.0);
 	}
 	catch (std::exception& ex)
 	{
 	    throw std::logic_error("Scene initialization failed:\n" + std::string(ex.what()) + "\n");
 	}
+
 }
 
 void Scene::render(float dt)
 {
+	// Hintergrund löschen
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+	// Aktivieren des Shaders
 	m_shader->use();
+
+
+	// Rotieren um die X- und Y-Achse
+	glm::vec3 rotationEulerAngles(dt * glm::radians(10.0f), dt * glm::radians(20.0f), 0.0f);
 
 
 	// Bind VAO
 	glBindVertexArray(vaoID);
 
 	// Draw triangle
-	glDrawElements(GL_TRIANGLES, 50, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
 
 	// Unbind VAO
