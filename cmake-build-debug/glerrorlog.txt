@@ -1,0 +1,4 @@
+An OpenGL error occured at file: "D:/5th Semester/Visual.Fömmer/OpenGL_Praktikum/src/Framework/Assets/ShaderProgram.cpp", line: 47:
+invalid operation
+An OpenGL error occured at file: "D:/5th Semester/Visual.Fömmer/OpenGL_Praktikum/src/Framework/Assets/ShaderProgram.cpp", line: 47:
+invalid operation
