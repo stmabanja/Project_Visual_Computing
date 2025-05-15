@@ -17,6 +17,8 @@ public:
 	void render(float dt);
 	void update(float dt);
 	OpenGLWindow* getWindow();
+	Transform* cubeTrans;
+
 
 	void onKey(Key key, Action action, Modifier modifier);
 	void onMouseMove(MousePosition mouseposition);

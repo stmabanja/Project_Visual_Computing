@@ -19,7 +19,6 @@ bool Scene::init()
 		m_shader = m_assets.getShaderProgram("shader");
 		m_shader->use();
 
-
 		glGenBuffers(1, &vboID); //ID generieren
 		glBindBuffer(GL_ARRAY_BUFFER, vboID ); //Buffer aktivieren
 		glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVert), &cubeVert, GL_STATIC_DRAW); // Hochladen der Daten auf die GPU
@@ -29,11 +28,11 @@ bool Scene::init()
 
 		// Define vertex attributes
 		// Positions
-		glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 2, GL_FLOAT, false, 6 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0); //Einschalten Attribute for Position.
 
 		// Colors
-		glVertexAttribPointer(1, 3, GL_FLOAT, false, 6 * sizeof(float), (void*)(3* sizeof(float)));
+		glVertexAttribPointer(1, 3, GL_FLOAT, false, 6 * sizeof(float), (void*)(2* sizeof(float)));
 		glEnableVertexAttribArray(1); //Einschalten Attribute for Colors.
 
 		//Create Index Buffer Object
@@ -49,33 +48,32 @@ bool Scene::init()
 
 		// Only the front sides of the triangles are rendered
 		glEnable(GL_CULL_FACE);
+		glFrontFace(GL_CCW);
 		glCullFace(GL_BACK);
+		
 
-		// Enable depth test
-		glEnable(GL_DEPTH_TEST);
-		glDepthFunc(GL_GREATER);
-		glClearDepth(0.0);
+        std::cout << "Scene initialization done\n";
+        return true;
 	}
 	catch (std::exception& ex)
 	{
 	    throw std::logic_error("Scene initialization failed:\n" + std::string(ex.what()) + "\n");
 	}
-
 }
 
 void Scene::render(float dt)
 {
-	// Hintergrund löschen
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+cubeTrans = new Transform();
+m_shader->use();
+	
 
-	// Aktivieren des Shaders
-	m_shader->use();
-
-
-	// Rotieren um die X- und Y-Achse
 	glm::vec3 rotationEulerAngles(dt * glm::radians(10.0f), dt * glm::radians(20.0f), 0.0f);
 
+
+	cubeTrans->rotate(rotationEulerAngles); // <--- apply rotation
+
+	// Pass the transform matrix to the shader
+	m_shader->setUniform("modelMatrix", cubeTrans->getMatrix(), false);
 
 	// Bind VAO
 	glBindVertexArray(vaoID);

@@ -19,7 +19,7 @@
 6467	8338	7676254252306853	libs/glfw-3.2.1/src/CMakeFiles/glfw.dir/wgl_context.c.obj	504bfe7b89e32221
 8318	8667	7676254270816532	libs/stb/CMakeFiles/stb.dir/stb_image_write.c.obj	7a782c1bb8279db0
 7042	8764	7676254258056906	libs/stb/CMakeFiles/stb.dir/stb_image.c.obj	b4213c1e088258ea
-18	1943	7690329979479014	CMakeFiles/OpenGL_Praktikum.dir/src/Game/Scene.cpp.obj	3ab820cb8c8b10c2
+12	2298	7690352253257020	CMakeFiles/OpenGL_Praktikum.dir/src/Game/Scene.cpp.obj	3ab820cb8c8b10c2
 6597	9836	7676254253597311	libs/glew-2.1.0/build/cmake/CMakeFiles/glew_s.dir/__/__/src/glew.c.obj	4adb97629f846b04
 4417	8069	7676260313418976	CMakeFiles/OpenGL_Praktikum.dir/framework/OBJLoader.cpp.obj	ef95d136da6d7ddf
 9836	11563	7676254286002515	CMakeFiles/OpenGL_Praktikum.dir/src/Framework/SceneElements/Transform.cpp.obj	8e291d8b225a5ceb
@@ -30,4 +30,16 @@
 22	4553	7676260269472214	CMakeFiles/OpenGL_Praktikum.dir/src/main.cpp.obj	60021523afeba407
 4554	4859	7676260314783595	lib/libglew32d.a	688f695c9bb81a24
 4859	5068	7676260317838008	libs/stb/libstb.a	b06d6ebdaaef4c86
-1943	2419	7690329998733121	OpenGL_Praktikum.exe	bd05ad8412187d9c
+2299	2827	7690352276120545	OpenGL_Praktikum.exe	bd05ad8412187d9c
+18	2260	7690353512278723	CMakeFiles/OpenGL_Praktikum.dir/src/Game/Scene.cpp.obj	3ab820cb8c8b10c2
+2260	2716	7690353534686579	OpenGL_Praktikum.exe	bd05ad8412187d9c
+15	2243	7690353810909319	CMakeFiles/OpenGL_Praktikum.dir/src/Game/Scene.cpp.obj	3ab820cb8c8b10c2
+2243	2673	7690353833188959	OpenGL_Praktikum.exe	bd05ad8412187d9c
+16	2788	7690354843892240	CMakeFiles/OpenGL_Praktikum.dir/src/main.cpp.obj	60021523afeba407
+24	2815	7690354843972278	CMakeFiles/OpenGL_Praktikum.dir/src/Game/Window.cpp.obj	4bf88654c24bf19e
+33	2859	7690354844062244	CMakeFiles/OpenGL_Praktikum.dir/src/Game/Scene.cpp.obj	3ab820cb8c8b10c2
+2859	3430	7690354872321622	OpenGL_Praktikum.exe	bd05ad8412187d9c
+12	1824	7690355513796082	CMakeFiles/OpenGL_Praktikum.dir/src/Game/Scene.cpp.obj	3ab820cb8c8b10c2
+1824	2258	7690355531918478	OpenGL_Praktikum.exe	bd05ad8412187d9c
+13	2027	7690358466263867	CMakeFiles/OpenGL_Praktikum.dir/src/Game/Scene.cpp.obj	3ab820cb8c8b10c2
+2028	2492	7690358486417296	OpenGL_Praktikum.exe	bd05ad8412187d9c
