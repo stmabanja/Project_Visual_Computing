@@ -69,6 +69,6 @@ CMake Deprecation Warning at libs/stb/CMakeLists.txt:1 (cmake_minimum_required):
   CMake that the project does not need compatibility with older versions.
 
 
--- Configuring done (0.3s)
+-- Configuring done (1.0s)
 -- Generating done (0.1s)
 -- Build files have been written to: D:/5th Semester/Visual.Fömmer/OpenGL_Praktikum/cmake-build-debug
