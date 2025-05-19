@@ -65,6 +65,7 @@ bool Scene::init()
 	    throw std::logic_error("Scene initialization failed:\n" + std::string(ex.what()) + "\n");
 	}
 }
+
 void Scene::render(float dt)
 {
 	// Hintergrund löschen
@@ -97,7 +98,7 @@ void Scene::render(float dt)
 	Transform bodyTransform;
 	bodyTransform.scale(glm::vec3(1.0f, 1.5f, 0.5f)); //skalierung: stretch taller und thinner.
 	bodyTransform.setMatrix(robotTransform * bodyTransform.getMatrix()); // combines all transformation with the main robot transformation
-	m_shader->setUniform("modelMatrix", bodyTransform.getMatrix(), false); // send headmatrix to shader
+	m_shader->setUniform("modelMatrix", bodyTransform.getMatrix(), false); // send matrix to shader
 	glBindVertexArray(vaoID);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0); // draw
 
@@ -140,7 +141,7 @@ void Scene::render(float dt)
 	// Transformationsmatrix für den linken Oberarm
     Transform leftUpperArmTransform;
     leftUpperArmTransform.scale(glm::vec3(0.2f, 0.75f, 0.25f)); // Oberarm ist dick und kurz
-    leftUpperArmTransform.translate(glm::vec3(-0.75f, 0.75f, 0.0f)); // Position des linken Oberarms
+    leftUpperArmTransform.translate(glm::vec3(-0.75f, 0.35f, 0.0f)); // Position des linken Oberarms
     leftUpperArmTransform.rotateAroundPoint(glm::vec3(-1.0f, 1.0f, 0.0f), glm::vec3(armSwingAngle, 0.0f, 0.0f)); // Rotate around shoulder joint
     leftUpperArmTransform.setMatrix(robotTransform * leftUpperArmTransform.getMatrix());
     m_shader->setUniform("modelMatrix", leftUpperArmTransform.getMatrix(), false);
@@ -149,7 +150,7 @@ void Scene::render(float dt)
     // Transformationsmatrix für den rechten Oberarm
     Transform rightUpperArmTransform;
     rightUpperArmTransform.scale(glm::vec3(0.2f, 0.75f, 0.25f)); // Rechts genauso wie links
-    rightUpperArmTransform.translate(glm::vec3(0.75f, 0.75f, 0.0f)); // Position des rechten Oberarms
+    rightUpperArmTransform.translate(glm::vec3(0.75f, 0.35f, 0.0f)); // Position des rechten Oberarms
     rightUpperArmTransform.rotateAroundPoint(glm::vec3(0.75f, 0.75f, 0.0f), glm::vec3(-armSwingAngle, 0.0f, 0.0f)); // Rotate around shoulder joint
     rightUpperArmTransform.setMatrix(robotTransform * rightUpperArmTransform.getMatrix());
     m_shader->setUniform("modelMatrix", rightUpperArmTransform.getMatrix(), false);
@@ -159,7 +160,7 @@ void Scene::render(float dt)
     Transform leftLowerArmTransform;
     leftLowerArmTransform.scale(glm::vec3(1.0f, 1.0f, 1.0f)); // Unterarm ist gleich groß wie der Oberarm
     leftLowerArmTransform.translate(glm::vec3(0.0f, -1.0f, 0.0f)); // Position des linken Unterarms
-    //leftLowerArmTransform.rotateAroundPoint(glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(armSwingAngle, 0.0f, 0.0f)); // Rotate around elbow joint
+    leftLowerArmTransform.rotateAroundPoint(glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(armSwingAngle, 0.0f, 0.0f)); // Rotate around elbow joint
     leftLowerArmTransform.setMatrix(leftUpperArmTransform.getMatrix() * leftLowerArmTransform.getMatrix());
     m_shader->setUniform("modelMatrix", leftLowerArmTransform.getMatrix(), false);
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -182,7 +183,6 @@ void Scene::render(float dt)
 	// Unbind VAO
 	glBindVertexArray(0);
 }
-
 /*void Scene::render(float dt)
 {
 	// Hintergrund löschen
