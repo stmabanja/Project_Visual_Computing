@@ -1,16 +1,8 @@
-//
-// Created by ASUS on 5/29/2025.
-//
 
-/*
- *#ifndef CUBEWITHNORMALS_H
-#define CUBEWITHNORMALS_H
-
-#endif //CUBEWITHNORMALS_H
 
 #ifndef OPENGL_PRAKTIKUM_CUBEWITHNORMALS_H
 #define OPENGL_PRAKTIKUM_CUBEWITHNORMALS_H
-*/
+
 
 // ATTENTION: this cube does not use indices
 // vertices, normals, colors: x, y, z, n_z, n_y, n_z, r, g, b
