@@ -31,3 +31,7 @@
 4554	4859	7676260314783595	lib/libglew32d.a	688f695c9bb81a24
 4859	5068	7676260317838008	libs/stb/libstb.a	b06d6ebdaaef4c86
 5082	5693	7693672183847622	OpenGL_Praktikum.exe	bd05ad8412187d9c
+21	2599	7722977854762713	CMakeFiles/OpenGL_Praktikum.dir/src/main.cpp.obj	60021523afeba407
+27	2643	7722977854827154	CMakeFiles/OpenGL_Praktikum.dir/src/Game/Window.cpp.obj	4bf88654c24bf19e
+33	2870	7722977854874726	CMakeFiles/OpenGL_Praktikum.dir/src/Game/Scene.cpp.obj	3ab820cb8c8b10c2
+2870	3461	7722977883255610	OpenGL_Praktikum.exe	bd05ad8412187d9c
